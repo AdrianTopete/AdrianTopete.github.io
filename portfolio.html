@@ -2,14 +2,95 @@
 <html>
     <head>
         <title> Adrian's Astonishing Website </title>
+        <style type="text/css">
+          body {
+              background: #00203fff;
+              color: #00203fff;
+              padding: 10px;
+              font-family: arial;
+          }
+          header {
+              font-size: 1.5em;
+              font-weight: bold;
+          }
+          
+          #all-contents {
+              max-width: 800px;
+              margin: auto;
+          }
+  
+          /* navigation menu */
+          nav {
+            border: 6px #fcbf49 ridge;
+                background: #adefd1ff;
+               margin: 0 auto;
+               margin-bottom: 20px;
+                display: flex;
+                padding: 10px;
+                border-radius: 30px;
+          }
+          h1 {
+            display: flex;
+                align-items: center;
+                color: #00203fff;
+                flex: 1;
+                margin: 0;
+          }
+          #nav-ul {
+              list-style-image: none;
+          }
+          .nav-li {
+              display: inline-block;
+              padding: 0 10px;
+          }
+          .nav-a {
+              text-decoration: none;
+              color: #00203fff;
+          }
+  
+          /* main container area beneath menu */
+          main {
+            background: #fcbf49;
+                border: 6px #adefd1ff ridge;
+                display: flex;
+                border-radius:20px;
+          }
+          .content {
+              flex: 1;
+              padding: 15px;
+          }
+           /* portfolio styles */
+         .content h1 {
+             color: #00203fff;
+         }
+         
+         #portfolio {
+             list-style-type: none;
+             padding-left: 0;
+         }
+         
+         #portfolio li {
+             background: white;
+             padding: 10px;
+             border-radius: 10px;
+             margin-bottom: 10px;
+             border:#adefd1ff ridge;
+         }
+         
+         #portfolio li:hover {
+             background: rgb(248, 225, 160);
+         } 
+         
+         #portfolio a {
+             text-decoration: none;
+             color: #00203fff;
+         }
+      </style>
     </head>
 
     <body>
       <div id="all-contents">
             <nav>
-                <main>
-
-                </main>
                 <h1> Adrian's Astonishing Website </h1>
                 <ul id="nav-ul">
                    <li class="nav-li">
@@ -19,7 +100,17 @@
                    <a class="nav-a" href="portfolio.html">Portfolio</a>
                  </li>
              </ul>
-         </nav>
+          </nav>
+          <main>
+           <div class="content">
+            <h1> Portfolio </h1>
+            <ul id="portfolio">
+              <li><a href="projects/platformer/">Platformer : A cannon - dodging, collectible - grabbing adventure game for Halleb0t</a></li>
+              <li><a href="projects/bouncing-box/">Bouncing Box : A project that gives you a taste of game development on the web </a></li>
+              <li><a href="projects/circularity/">Circularity : A motion poem using random number generation and velocity applied to circle shapes...</a></li>
+            </ul>
+           </div>
+          </main>
       </div>
     </body>
 </html>
