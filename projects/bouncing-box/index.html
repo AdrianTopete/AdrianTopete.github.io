@@ -5,28 +5,56 @@
 	<title>Bouncing Box</title>
 	<script src="jquery.min.js"></script>
 	<style>
+		.rules{
+			height: 1px;
+			width: 700px;
+			color: white; 
+			margin-left: 350px; 
+		}
 		.box {
 			width: 70px;
 			height: 70px;
-			background-color: teal;
+			background-color: #adefd1ff;
+			border: 6px #fcbf49 ridge;
+			border-radius: 30px;
 			font-size: 300%;
 			text-align: center;
 			display: block;
 			position: absolute;
 			top: 100px;
-			left: 0px;  /* <--- Change me! */
+			left: 500px;  /* <--- Change me! */
 		}
 		.board{
+			background-color:#00203fff;; 
 			height: 100vh;
+			border: 6px #fcbf49 ridge;
+			border-radius: 30px;
 		}
+		.endscreen{
+			height: 15px;
+			width: 300px;
+			font-size: larger;
+			color: white; 
+			margin: 10px; 
+		}
+		.score{
+			height: 10px;
+			width: 100px; 
+			font-size: larger;
+			color: white; 
+			margin: 10px; 
+		}
+		
 	</style>
 	<!-- 	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script> -->
 
 </head>
 <body class="board">
-	<!-- HTML for the box -->
+	<!-- HTML for the box, endscreen, and score -->
 	<div class="box">?</div>
-
+	<div class="endscreen"></div>
+	<div class="score"></div>
+	<h2 class = rules> Tap the Bouncing Box to Begin - (Dont Miss more than 10 times!) </h3>
 	<script>
 		(function(){
 			'use strict'
@@ -39,16 +67,26 @@
 			var box = jQuery('.box');	// reference to the HTML .box element
 			var board = jQuery('.board');	// reference to the HTML .board element
 			var boardWidth = board.width();	// the maximum X-Coordinate of the screen
+			var boardHeight = jQuery(window).height(); // the maximum Y-Coordinate of the screen 
+			var endscreen = jQuery('.endscreen'); // refrence to the HTML .endscreen element
+			var score = jQuery('.score'); // refrence to the HTML .score element
+			var rules = jQuery('.rules'); // refrence to the HTML .rules element
 
-			// Every 50 milliseconds, call the update Function (see below)
-			setInterval(update, 50);
+
+			// Every 35 milliseconds, call the update Function (see below)
+			var interval = setInterval(update, 35);
 			
 			// Every time the box is clicked, call the handleBoxClick Function (see below)
 			box.on('click', handleBoxClick);
 
-			// moves the Box to a new position on the screen along the X-Axis
-			function moveBoxTo(newPositionX) {
+			//Every time the board is clicked, call he handleBoardClick Function
+			board.on('click', handleBoardClick); 
+
+
+			// moves the Box to a new position on the screen along the X-Axis and Y-Axis
+			function moveBoxTo(newPositionX, newPositionY) {
 				box.css("left", newPositionX);
+				box.css('top', newPositionY);
 			}
 
 			// changes the text displayed on the Box
@@ -56,23 +94,100 @@
 				box.text(newText);
 			}
 
+			// changes the text displayed on the Endscreen 
+			function changeEndText(newText) {
+				endscreen.text(newText);
+			}
+
+			// changes the text displayed on the Score
+			function changeScoreText(newText) {
+				score.text(newText);
+			}
+
+			// changes the text displayed on the Score
+			function changeRuleText(newText) {
+				rules.text(newText);
+			}
+
 			//////////////////////////////////////////////////////////////////
 			/////////////////// YOUR CODE BELOW HERE /////////////////////////
 			//////////////////////////////////////////////////////////////////
 			
 			// TODO 2 - Variable declarations 
-			
-
-			
+			var speedInc = 1;
+			var positionY = 100;
+			var positionX = 500;
+			var points = 0;
+			var speed = 10;
+			var speedY = 10; 
+			var count = 0; 
+			var colorStr = "rgb(173, 239, 209)";
+			var missClicks = 0  
 			/* 
 			This Function will be called 20 times/second. Each time it is called,
 			it should move the Box to a new location. If the box drifts off the screen
 			turn it around! 
 			*/
+			
 			function update() {
-				
+
+				 /* My Code to Increase positionX by 10 HERE*/
+				 positionX = positionX + speed;
+				 if (positionX > boardWidth) {
+					speed = -speed;
+				}
+				else if (positionX < 0) {
+					speed = -speed;
+				}
+				/* My Code to Increase positionY by 10 HERE*/
+				positionY = positionY + speedY;
+				if (positionY > boardHeight) {
+					speedY = -speedY;
+				}
+				else if (positionY < 0) {
+					speedY = -speedY;
+				}
+				moveBoxTo(positionX, positionY);
+				//code to change box color 
+				getRandomColor();
+				box.css('background-color', colorStr);
+				changeEndText("Misses: " + missClicks); 
+				changeScoreText("Points: " + points);
+			};
+
+			//function for random colors of bouncing box and speed increase with every 3 clicks
+			function getRandomColor(){
+				if (count === 3){ 
+					var randNum250 = Math.random() * 250;
+					var randNum2502 = Math.random() * 250;
+					var randNum2503 = Math.random() * 250; 
+					colorStr = "rgb(" + randNum250 +", " + randNum2502 + ", " + randNum2503+")";
+					speedInc = speedInc+1
+					count = 0; 
+				}	
 
 			};
+
+			// function for ending game
+			function endGame() {
+  			  clearInterval(interval);
+			}; 
+
+
+			/* This Function will be called everytime the board is clicked.Each time it is 
+			called it should increase misclicks total amount.
+			*/
+			function handleBoardClick(){
+				missClicks = missClicks+1
+				changeRuleText(" "); 
+				if (missClicks === 10){
+				endGame();
+				changeEndText("GAME OVER - Refresh to play again"); 
+				changeScoreText("Score: " + points);
+			}
+			};
+	
+
 
 			/* 
 			This Function will be called each time the box is clicked. Each time it is called,
@@ -80,11 +195,30 @@
 			the left side of the screen.
 			*/
 			function handleBoxClick() {
+				var randNum = Math.random() * 1250;
+				var randNum2 = Math.random() * 500; 
+				positionX = randNum;
+				positionY = randNum2; 
+				points = points + 1;
+				count = count + 1; 
+				missClicks = missClicks - 1; 
+				changeBoxText(points);
+				if (speed > 0) {
+					speed = speed + speedInc;
+				}
+				else if (speed < 0){
+					speed = speed -speedInc;
+				}
+				else if (speedY > 0) {
+					speedY = speedY + speedInc;
+				}
+				else if (speedY < 0){
+					speedY = speedY -speedInc;
+				}
 				
-
-
-			};
+			}; 
 		})();
-	</script>
+
+		</script>
 </body>
 </html>

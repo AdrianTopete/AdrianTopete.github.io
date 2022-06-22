@@ -52,7 +52,7 @@
             
             //  Allow the player to jump if they are touching the ground.
             if (cursors.up.isDown && asset.body.touching.down) {
-                player.flyingJump();
+                player.flyingJump(100);
             }
         }
         
