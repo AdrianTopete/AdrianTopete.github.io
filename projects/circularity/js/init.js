@@ -23,6 +23,7 @@ var init = function (window) {
 
         var circle;
         var circles = [];
+
   // TODO 2 : Create a function that draws a circle 
         function drawCircle(){
             circle = draw.randomCircleInArea(canvas, true, true, '#999', 2);
@@ -83,7 +84,7 @@ var init = function (window) {
                 circle.y = 0;
             }
             //if the circle has gone past the LEFT side of the screen then place it on the RIGHT
-            if (circle.x < 0){
+            if (circle.x < 0){ 
                 circle.x = canvas.width;
             }
             //if the circle has gone past the TOP side of the screen then place it at the BOTTOM
