@@ -11,8 +11,8 @@ function runProgram() {
   var FRAME_RATE = 60;
   var FRAMES_PER_SECOND_INTERVAL = 1000 / FRAME_RATE;
 
-  var origin = 0;
-  var origin2 = 390;
+  var origin = 0; // origin position for "walker"
+  var origin2 = 390; // origin position for "walker2"
   var positionX = 0; // the x-coordinate location for walker
   var positionY = 0; // the y-coordinate lacation for walker
   var speedX = 0; // the speed for walker along the x-axis
@@ -21,11 +21,11 @@ function runProgram() {
   var positionY2 = 390; // the y-coordinate location for walker2
   var speedX2 = 0; // the speed for walker2 along the x-axis
   var speedY2 = 0; // the speed for walker2 along the y-axis
-  var i = Math.random(10);
-  var teal = jQuery("#teal");
-  var green = jQuery("#green");
-  var points = 0;
-  var points2 = 0;
+  var i = Math.random(10); // variable used to randomly determine who is "it" first 
+  var teal = jQuery("#teal"); // assigns "teal" variable to the same class
+  var green = jQuery("#green"); // assigns "green" variable to the same class
+  var points = 0; // keeps track of "walker" points
+  var points2 = 0; // keeps track of "walker2" points
 
   // Game Item Objects
   var KEY = {
