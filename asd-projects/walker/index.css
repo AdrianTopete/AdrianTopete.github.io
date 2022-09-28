@@ -11,11 +11,32 @@ body {
   position: relative;
 }
 
-#gameItem {
+#walker {
   background-color: teal;
   width: 50px;
   height: 50px;
   position: absolute;
-/*   left: 100px; */  /* Uncomment if you want to set a "starting" position */
-/*   top: 100px;  */  /* Uncomment if you want to set a "starting" position */
+  border-radius: 50;
+  left: 100px;  /* "starting" position */
+  top: 100px;   /* "starting" position */
+}
+
+#walker2 {
+  background-color: greenyellow;
+  width: 50px;
+  height: 50px;
+  position: absolute;
+  border-radius: 50;
+  top: 390px;  /* "starting" position */
+  left: 390px;   /* "starting" position */
+}
+
+#score {
+  margin: auto; 
+  position: relative; 
+  width: 30%;
+  border: 3px solid green;
+  padding: 10px;
+  text-align: center;
+  color: white; 
 }
