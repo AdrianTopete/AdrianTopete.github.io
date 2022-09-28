@@ -66,33 +66,34 @@ function runProgram() {
   */
   function handleKeyDown(event) {
     //recognizes and displays to the console what key is being pressed
-    if (event.which === KEY.LEFT) {
+    if (event.which === KEY.LEFT) { // moves "walker" left
       speedX = -5;
     }
-    if (event.which === KEY.UP) {
+    if (event.which === KEY.UP) { // moves "walker" up 
       speedY = -5;
     }
-    if (event.which === KEY.RIGHT) {
+    if (event.which === KEY.RIGHT) { // moves "walker" right
       speedX = 5;
     }
-    if (event.which === KEY.DOWN) {
+    if (event.which === KEY.DOWN) { // moves "walker" down
       speedY = 5;
     }
-    if (event.which === KEY.A) {
+    if (event.which === KEY.A) { // moves "walker2" left
       speedX2 = -5;
     }
-    if (event.which === KEY.W) {
+    if (event.which === KEY.W) { // moves "walker2" up
       speedY2 = -5;
     }
-    if (event.which === KEY.D) {
+    if (event.which === KEY.D) { // moves "walker2" right
       speedX2 = 5;
     }
-    if (event.which === KEY.S) {
+    if (event.which === KEY.S) { // moves "walker" down
       speedY2 = 5;
     }
   }
   function handleKeyUp(event) {
     //recognizes and displays to the console if key is not being pushed
+    // stops "walker" and "walker2" from continuously moving
     if (event.which === KEY.LEFT) {
       speedX = 0;
     }
@@ -154,7 +155,7 @@ function runProgram() {
     }
   }
   function playersCollide() {
-    // detects if "walker" and "walker2" collide and repositions them into opposites corners
+    // detects if "walker" and "walker2" collide, repositions them into opposites corners, and switches colors to either red or its normal color
     if (
       positionX + 50 >= positionX2 &&
       positionX <= positionX2 + 50 &&
@@ -204,7 +205,7 @@ function runProgram() {
   }
   function final() {
     // displays the winner, changes the text to match, and ends the game
-    if (points === 10) {
+    if (points === 10) { // 
       endGame();
       changeTealText("Teal Wins!");
       changeGreenText("Refresh to play again");
@@ -223,10 +224,10 @@ function runProgram() {
 
   function repositionGameItem() {
     // determines the position of "walker" and "walker2"
-    positionX += speedX;
-    positionY += speedY;
-    positionX2 += speedX2;
-    positionY2 += speedY2;
+    positionX += speedX; // x-position of "walker"
+    positionY += speedY; // y-position of "walker"
+    positionX2 += speedX2; // x-position of "walker2"
+    positionY2 += speedY2; // y-position of "walker2"
   }
   function redrawGameItem() {
     $("#walker").css("left", positionX); // draw "walker" in the new location, positionX pixels away from the "left"
