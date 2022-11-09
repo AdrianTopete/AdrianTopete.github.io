@@ -1,0 +1,34 @@
+User Story / Gameplay:
+1. Describe the Gameplay - There will be two "paddles" and one "ball". The objective is to hit the ball with your assigned paddle and make
+ the other player miss it, which will gain your side 1 point. 
+2. What are the conditions when the game begins? - Both "paddles" will be set centered at opposite ends of the border, the scores of each 
+player will be set to 0, and the ball will randomly selection which direction to go in at the start of each game. 
+3. Does the game have an end? If so, what are the conditions for when it ends? - The game will have an end and it will be when one player
+ reaches a score of 10
+4. What ifs will there be? - There will be ifs to check if a score of 10 has been reached (then end game), if a key has been pressed, if the ball touches 
+the area behind a "paddle" (scores a point), if the "ball" has touched the border (then bounces off), and if the "ball" has touched a "paddle" (then 
+bounces off and increase "ball" speed by 1).
+
+Visual Game Components:
+1. What are the visual game components? For example, in Bouncing Box, the game components were the board and the box.
+The visual game components will be the two "paddles", the "ball", the scores, the board, and the border. 
+ - Which will be static? The border, scores, and board will both be static
+ - Which will be animated? The "ball" and the "paddles" will be animated.
+2. What data will you need to manage each game component? For example, in Bouncing Box, the data values were positionX, speedX, and points.
+The data that I will need to manage each game component are  positionX, positionY, speedX, speedY, score1, and score2.
+git commit -a -m "reflections text"
+
+
+Events / Logic
+1. What events will occur in this game? (timer events, keyboard events, clicking events?)
+The events that will occur in this game is when the "WASD" or arrow keys are pressed (the "paddles" will move) and the visual game components will be animated
+every 500 miliseconds.
+2. How do those events affect the data of the program?
+For each "event", write out the high-level logic of what will happen. It is better (and tricky) to be as specific as you can while remaining high-level!
+
+When an WASD or arrow key is pressed: 
+move paddle in respective direction
+
+When 500 milliseconds has passed:
+redraw visual game components to match their current status. 
+
