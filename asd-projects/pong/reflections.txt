@@ -16,19 +16,18 @@ The visual game components will be the two "paddles", the "ball", the scores, th
  - Which will be animated? The "ball" and the "paddles" will be animated.
 2. What data will you need to manage each game component? For example, in Bouncing Box, the data values were positionX, speedX, and points.
 The data that I will need to manage each game component are  positionX, positionY, speedX, speedY, score1, and score2.
-git commit -a -m "reflections text"
 
 
 Events / Logic
 1. What events will occur in this game? (timer events, keyboard events, clicking events?)
-The events that will occur in this game is when the "WASD" or arrow keys are pressed (the "paddles" will move) and the visual game components will be animated
-every 500 miliseconds.
+The events that will occur in this game is when the "WASD" or arrow keys are pressed (the "paddles" will move) and the visual game components will be updated
+every frame (30 fps).
 2. How do those events affect the data of the program?
 For each "event", write out the high-level logic of what will happen. It is better (and tricky) to be as specific as you can while remaining high-level!
 
 When an WASD or arrow key is pressed: 
 move paddle in respective direction
 
-When 500 milliseconds has passed:
-redraw visual game components to match their current status. 
+When 1 frmae has passed:
+update entire game status
 

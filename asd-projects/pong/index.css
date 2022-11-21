@@ -4,18 +4,73 @@ body {
 }
 
 #board {
-  width: 440px;
-  height: 440px;
+  margin: auto; 
+  width: 1300px;
+  height: 650px;
   border: 1px solid white;
   background-color: black;
   position: relative;
+  
 }
 
-#gameItem {
-  background-color: teal;
-  width: 50px;
-  height: 50px;
+#rightPaddle {
+  background-color: lime;
+  width: 25px;
+  height: 100px;  
+  /* positioning */
   position: absolute;
-/*   left: 100px; */  /* Uncomment if you want to set a "starting" position */
-/*   top: 100px;  */  /* Uncomment if you want to set a "starting" position */
+  top: 100px;
+  left: 1200px;
+  border-radius: 5px; 
 }
+
+#ball {
+  /* appearance */
+  background-color: red;
+  width: 20px;
+  height: 20px;
+  border-radius: 10px;
+  
+  /* positioning */
+  position: absolute;
+  top: 10px;
+  left: 10px;
+}
+
+#leftPaddle {
+  /* appearance */
+  background-color: blue;
+  width: 25px;
+  height: 100px;  
+  /* positioning */
+  position: absolute;
+  top: 10px;
+  left: 70px;
+  border-radius: 5px; 
+}
+
+#score1{
+  color: white; 
+  font-size: 60px;
+  width: 100px;
+  height: 100px;  
+  font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif; 
+  /* positioning */
+  position: relative;
+  border-radius: 5px; 
+  top: 0px;
+  left: 650px; 
+}
+#score2{
+  color: white; 
+  font-size: 60px;
+  width: 100px;
+  height: 100px;  
+  font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif; 
+  /* positioning */
+  position: absolute;
+  top: 0px;
+  left: 550px;
+  border-radius: 5px; 
+}
+
