@@ -26,6 +26,7 @@ function runProgram(){
   };
   var updatedScore1 = 0; 
   var updatedScore2 = 0; 
+  var button =     $("#b").css("background-color", "red");
   // one-time setup
   let interval = setInterval(newFrame, FRAMES_PER_SECOND_INTERVAL);   // execute newFrame every 0.0166 seconds (60 Frames per second)
   $(document).on('keydown', handleKeyDown);                           // change 'eventType' to the type of event you want to handle
@@ -50,8 +51,12 @@ function runProgram(){
     wallCollision(Rpaddle); 
     doCollide(Ball, Lpaddle);
     doCollide(Ball, Rpaddle); 
+    hitL = collisionSide(Ball, Lpaddle);
+    hitR = collisionSide(Ball, Rpaddle);
     bounce(); 
     endGame(); 
+    button.on('click', handleButtonClick);
+
   }
   //boarder 
   
@@ -88,6 +93,17 @@ function runProgram(){
       Lpaddle.speedY = 0; 
     }
   }
+
+  function handleButtonClick (){
+    updatedScore1 = 0;
+    updatedScore2 = 0; 
+    $("#score1").text(updatedScore1);
+    $("#score2").text(updatedScore2);
+    startBall(); 
+    if (endgame === true){
+      interval = setInterval(newFrame, FRAMES_PER_SECOND_INTERVAL); 
+    }
+  }
   ////////////////////////////////////////////////////////////////////////////////
   ////////////////////////// HELPER FUNCTIONS ////////////////////////////////////
   ////////////////////////////////////////////////////////////////////////////////
@@ -97,10 +113,20 @@ function runProgram(){
     if(updatedScore1 === 10 || updatedScore2 === 10){
     // stop the interval timer
     clearInterval(interval);
-
+    endgame = true;
     // turn off event handlers
     $(document).off();
+    if(updatedScore1 === 10){
+      $("#score2").text("GREEN WON!");
+      $("#score1").text(" ");
+
     }
+    else{
+      $("#score2").text("BLUE WON!");
+      $("#score1").text(" ");
+    }
+    }
+    
   }
 
   function Item(id){
@@ -126,8 +152,8 @@ function runProgram(){
   function startBall(){
   Ball.x = 650; 
   Ball.y = 325; 
-  Ball.speedX = (Math.random() * 3 + 2) * (Math.random() > 0.5 ? -1 : 1);
-  Ball.speedY = (Math.random() * 3 + 2) * (Math.random() > 0.5 ? -1 : 1);
+  Ball.speedX = (Math.random() * 3 + 5) * (Math.random() > 0.5 ? -1 : 1);
+  Ball.speedY = (Math.random() * 3 + 5) * (Math.random() > 0.5 ? -1 : 1);
   }
   
   function wallCollision(item) {
@@ -162,25 +188,79 @@ function runProgram(){
         return false;
         
     }
+    
   }
 
   function bounce(){
-    if (doCollide(Ball, Lpaddle)) {
-      Ball.speedX = -Ball.speedX;
-      Ball.speedX += 1;
-      console.log(Ball.speedX);
-    }
-    if (doCollide(Ball, Rpaddle)){
-      Ball.speedX = -Ball.speedX;
-      Ball.speedX -= 1; 
-      console.log(Ball.speedX);
-    }
     if (Ball.y > 0) {
       Ball.speedY = -Ball.speedY;
     }
     if (Ball.y + Ball.height < BOARD_HEIGHT){
       Ball.speedY = -Ball.speedY; 
     }
+    if (hitL === "right"){
+      Ball.speedX = -Ball.speedX +1;
+      console.log(Ball.speedX); 
+    }
+    if (hitL === "left"){
+      Ball.speedX = Ball.speedX;
+    }
+    if (hitL === "top"){
+      Ball.speedY = -Ball.speedY;
+    } 
+    if (hitL === "bottom"){
+      Ball.speedY = -Ball.speedY;
+    }
+    if (hitR === "right"){
+      Ball.speedX = Ball.speedX;
+    }
+    if (hitR === "left"){
+      Ball.speedX = -Ball.speedX - 1;
+      console.log(Ball.speedX); 
+    }
+    if (hitR === "top"){
+      Ball.speedY = -Ball.speedY;
+    } 
+    if (hitR === "bottom"){
+      Ball.speedY = -Ball.speedY;
+    }
   }
+
+  function collisionSide(ball, paddle) {
+    if (!doCollide(ball, paddle)) {
+      return "none";
+    }
+
+    // get the center values
+    var centerxB = ball.x + ball.width / 2;
+    var centeryB = ball.y + ball.height / 2;
+    var centerxP = paddle.x + paddle.width / 2;
+    var centeryP = paddle.y + paddle.height / 2;
+
+    // get the ratio of width to height for the paddle
+    var ratioP = paddle.width / paddle.height;
+
+    // get normalized coordinates for the ball with respect to the paddle
+    var normalxB = centerxB - centerxP;
+    var normalyB = (centeryB - centeryP) * ratioP
+// determine if the ball is relatively more left or right than up or down
+    var leftRight = Math.abs(normalxB) > Math.abs(normalyB);
+
+    // if more left or right, then decide which side it was on compared to the paddle
+    if (leftRight) {
+      if (normalxB > 0) {
+        return "right";
+      }
+      return "left";
+    }
+    // if more up or down, then do the same but for up and down
+    else {
+      if (normalyB > 0) {
+        return "bottom";
+      }
+      return "top";
+    }
+  }
+
 }
 
