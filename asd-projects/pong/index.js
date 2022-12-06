@@ -32,6 +32,7 @@ function runProgram(){
   let interval = setInterval(newFrame, FRAMES_PER_SECOND_INTERVAL);   // execute newFrame every 0.0166 seconds (60 Frames per second)
   $(document).on('keydown', handleKeyDown);                           // change 'eventType' to the type of event you want to handle
   $(document).on("keyup", handleKeyUp);
+  button.on('click', handleButtonClick);
   startBall(); 
 
 
@@ -56,7 +57,6 @@ function runProgram(){
     hitR = collisionSide(Ball, Rpaddle);
     bounce(); 
     endGame(); 
-    button.on('click', handleButtonClick);
 
   }
   //boarder 
@@ -104,7 +104,7 @@ function runProgram(){
     $("#score1").text(updatedScore1);
     $("#score2").text(updatedScore2);
     startBall(); 
-    if (endgame === true){
+    if (end === true){
       interval = setInterval(newFrame, FRAMES_PER_SECOND_INTERVAL); 
     }
   }
@@ -117,7 +117,7 @@ function runProgram(){
     if(updatedScore1 === 10 || updatedScore2 === 10){
     // stop the interval timer
     clearInterval(interval);
-    endgame = true;
+    end = true;
     // turn off event handlers
     $(document).off();
     if(updatedScore1 === 10){
