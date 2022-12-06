@@ -23,10 +23,11 @@ function runProgram(){
     DOWN: 40,
     W: 87,
     S: 83,
+    enter: 16, 
   };
   var updatedScore1 = 0; 
   var updatedScore2 = 0; 
-  var button =     $("#b").css("background-color", "red");
+  var button = $("#b").css("background-color", "red");
   // one-time setup
   let interval = setInterval(newFrame, FRAMES_PER_SECOND_INTERVAL);   // execute newFrame every 0.0166 seconds (60 Frames per second)
   $(document).on('keydown', handleKeyDown);                           // change 'eventType' to the type of event you want to handle
@@ -76,6 +77,9 @@ function runProgram(){
     }
     if (event.which === KEY.S) { 
       Lpaddle.speedY = 10; 
+    }
+    if (event.which === KEY.enter){
+      updatedScore1 = 10; 
     }
   }
 
