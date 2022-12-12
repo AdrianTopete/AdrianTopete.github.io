@@ -19,7 +19,7 @@ body {
   height: 100px;  
   /* positioning */
   position: absolute;
-  top: 100px;
+  top: 275px;
   left: 1200px;
   border-radius: 5px; 
 }
@@ -44,7 +44,7 @@ body {
   height: 100px;  
   /* positioning */
   position: absolute;
-  top: 10px;
+  top: 275px;
   left: 70px;
   border-radius: 5px; 
 }
@@ -74,4 +74,57 @@ body {
   border-radius: 5px; 
 }
 
+#b{
+  position: relative; 
+  margin: auto; 
+  top: 555px;
+  left: 175px;
+  width: 200px; 
+  height: 25px; 
+  color: white; 
+  background-color: orange; 
+}
 
+#buttonm1{
+  position: relative; 
+  margin: auto; 
+  width: 200px; 
+  top: 555px; 
+  left: 55px; 
+  height: 25px; 
+  color: white; 
+  background-color: red;
+}
+
+#buttonm2{
+  position: relative; 
+  margin: auto; 
+  top: 555px;
+  left: 95px;
+  width: 200px; 
+  height: 25px; 
+  color: white; 
+  background-color: purple;
+}
+
+#buttonm3{
+  position: relative; 
+  margin: auto; 
+  top: 555px;
+  left: 135px;
+  width: 200px; 
+  height: 25px; 
+  color: white; 
+  background-color: teal;
+}
+
+#buttonm4{
+  position: relative; 
+  margin: auto; 
+  top: 555px;
+  left: 215px;
+  width: 200px; 
+  height: 25px; 
+  color: white; 
+  background-color: rgb(192, 78, 78);
+}
