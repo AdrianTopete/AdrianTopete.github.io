@@ -18,6 +18,7 @@
   ],
   "dependencies": {
     "EaselJS": "^1.0.2",
-    "V6": "^0.0.2"
+    "V6": "^0.0.2",
+    "HelenKeller-s-Secrets": "https://github.com/AdrianTopete/HelenKeller-s-Secrets.git#^0.0.4"
   }
 }
