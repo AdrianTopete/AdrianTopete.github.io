@@ -1,0 +1,20 @@
+{
+  "name": "HelenKeller-s-Secrets",
+  "homepage": "https://github.com/AdrianTopete/HelenKeller-s-Secrets",
+  "authors": [
+    "AdrianTopete <adriant.7236@gmail.com>"
+  ],
+  "description": "This is a video game Library to help develope games",
+  "main": "index.js",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "lodash": "^4.17.21"
+  }
+}

@@ -1,5 +1,5 @@
 // TODO 5.d: Replace *my-game-lib* with the name of your game lib
-(function(window, opspark, *my-game-lib*) {
+(function(window, opspark, HelenKellersSecrets) {
   // holds all bodies active in our space //
   const active = [];
 
@@ -26,4 +26,4 @@
     }
   };
 // TODO 5.c: Replace *my-game-lib* with the name of your game lib
-}(window, window.opspark, window.*my-game-lib*));
+}(window, window.opspark, window.HelenKellersSecrets));

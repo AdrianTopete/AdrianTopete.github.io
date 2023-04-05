@@ -1,5 +1,5 @@
 // TODO 4: Change *my-game-lib* to the name of your game lib
-(function(window, opspark, *my-game-lib*) {
+(function(window, opspark, HelenKellersSecrets) {
   const
     engine = opspark.V6().activateResize(),
     canvas = engine.getCanvas(),
@@ -111,4 +111,4 @@
   }
   
   // TODO 3: replace *my-game-lib* with the name of your game lib //
-}(window, window.opspark, window.*my-game-lib*));
+}(window, window.opspark, window.HelenKellersSecrets));
