@@ -1,0 +1,31 @@
+{
+  "name": "HelenKeller-s-Secrets",
+  "homepage": "https://github.com/AdrianTopete/HelenKeller-s-Secrets",
+  "authors": [
+    "AdrianTopete <adriant.7236@gmail.com>"
+  ],
+  "description": "This is a video game Library to help develope games",
+  "main": "index.js",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "lodash": "^4.17.21"
+  },
+  "version": "0.0.5",
+  "_release": "0.0.5",
+  "_resolution": {
+    "type": "version",
+    "tag": "v0.0.5",
+    "commit": "ce033dc67c4c65844816859767982f908078dfbe"
+  },
+  "_source": "https://github.com/AdrianTopete/HelenKeller-s-Secrets.git",
+  "_target": "^0.0.5",
+  "_originalSource": "https://github.com/AdrianTopete/HelenKeller-s-Secrets.git",
+  "_direct": true
+}
