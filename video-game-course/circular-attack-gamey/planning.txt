@@ -1,0 +1,4 @@
+1. Major change: implementation of ammo system
+   Minor change: ammo power ups
+
+2. 
