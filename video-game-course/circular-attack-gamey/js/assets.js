@@ -104,7 +104,7 @@
           ship.update = updateShip;
           
           // ammo 
-          ship.ammo = 100; 
+          ship.ammo = 20; 
 
           /*
            * Returns the global position of where

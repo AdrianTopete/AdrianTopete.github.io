@@ -59,9 +59,9 @@
           txtScore = draw.textfield('SCORE : 000', "19px Arial", '#666', 'left'),
           integrity = new createjs.Container(),
           background = draw.rect(104, 20, '#CCC'),
-          integrityMeter = draw.rect(100, 16, ship.color || '#3333CC');
+          integrityMeter = draw.rect(100, 16, ship.color || '#3333CC'),
           ammoContainer = new createjs.Container(),
-          txtAmmo = draw.textfield('Ammo:' + ammo, "19px Arial", '#666', 'left'),
+          txtAmmo = draw.textfield('Ammo:' + ammo, "19px Arial", '#666', 'left');
 
         draw.rect(102, 18, '#FFF', null, null, 1, 1, background);
 
