@@ -1,5 +1,6 @@
 const http = require("http");
 const async = require("async");
+const { start } = require("repl");
 
 const port = 8686;
 
@@ -34,8 +35,15 @@ http
         // TODO 10: add a callback function to the end of the async call to tally the results
         function callback(){
             res.write("Results:\n");
+            var victoryOrder = sortTogether(racers, results);
+              for(var i= 0; i <= victoryOrder.length; i++){
+                res.write(victoryOrder.name[i]+'\n');
+              }
+              var d = new Date(); 
+              var endTime = d.getTime();
+              var duration = startTime - endTime; 
+              res.end(duration+'\n'); 
         }
-        var victoryOrder = sortTogether(racers, results);
       } 
     );
   })
