@@ -15,7 +15,7 @@ http
     let startTime = d.getTime();
 
     // TODO 12: Make the whole thing parallel
-    async.series(
+    async.parallel(
       // TODO 9: Supply an array of functions
       [
         function (callback) {
@@ -33,18 +33,17 @@ http
       ],
       function (error, results) {
         // TODO 10: add a callback function to the end of the async call to tally the results
-        function callback(){
-            res.write("Results:\n");
-            var victoryOrder = sortTogether(racers, results);
-              for(var i= 0; i <= victoryOrder.length; i++){
-                res.write(victoryOrder.name[i]+'\n');
-              }
-              var d = new Date(); 
-              var endTime = d.getTime();
-              var duration = startTime - endTime; 
-              res.end(duration+'\n'); 
+
+        res.write("Results:\n");
+        var victoryOrder = sortTogether(racers, results);
+        for (var i = 0; i < victoryOrder.length; i++) {
+          res.write(victoryOrder[i]+"\n");
         }
-      } 
+        var d = new Date();
+        var endTime = d.getTime();
+        var duration = endTime - startTime;
+        res.end(duration+"\n");
+      }
     );
   })
   .listen(port);
