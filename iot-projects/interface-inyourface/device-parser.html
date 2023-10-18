@@ -65,7 +65,12 @@
 
             $.ajax({
             // TODO 6: Add in the basic properties and error property of the object passed to the AJAX call
-            
+            url: $('#host').val(),
+            method: 'GET',
+            dataType: 'json',
+            error: function (jqXHR, textStatus, errorThrown) {
+            console.log(errorThrown);
+            },
             
             success: function (data) {
                 // These two lines add links to the metadata and documentation of the device, respectively.
@@ -74,7 +79,7 @@
                 $('#doc').html(data.links.doc.title + " <a href=\"" + data.links.doc.rel + "\">" + data.links.doc.rel + "</a>");
 
                 // TODO 7: Generate the URL to the sensors of the device
-
+                sensorsPath = data.url + data.resources.sensors.url;
                 $.ajax({
                 url: sensorsPath,
                 method: 'GET',
@@ -82,8 +87,15 @@
 
                 success: function (data) {
                     // TODO 8: Create a success function that iterates over the list of sensors and displays them
-                    
+                    var sensorsList = "";
+                    $("#sensors").html(Object.keys(data).length + " sensors found!");
+                    for (var sensorKey in data) {
+                        var html = '<li><a href="' + sensorsPath + sensorKey + '">' + data[sensorKey].name + "</a></li>";
+                        sensorsList = sensorsList + html; // Append the new HTML to sensorsList
+                    }
+                    $("#sensors-list").html(sensorsList);
                 },
+
 
                 error: function (jqXHR, textStatus, errorThrown) {
                     console.log(errorThrown);
